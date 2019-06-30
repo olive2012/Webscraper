@@ -24,7 +24,7 @@ class App extends React.Component {
     }
 
     refreshData = () => {
-        axios.get("http://localhost:8080/api/data")
+        axios.get("/api/data")
             .then(result => {
                     this.setState({showData: result.data})
 
