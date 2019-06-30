@@ -1,6 +1,5 @@
-package it.akademija.webscrapper.setvice;
+package it.akademija.webscrapper.service;
 
-import com.gargoylesoftware.htmlunit.WebClient;
 import org.springframework.stereotype.Service;
 
 @Service
