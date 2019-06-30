@@ -8,9 +8,8 @@ import java.io.IOException;
 @SpringBootApplication
 public class WebscrapperApplication {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		SpringApplication.run(WebscrapperApplication.class, args);
-		Scraper.getDataFromURL();
 	}
 
 }

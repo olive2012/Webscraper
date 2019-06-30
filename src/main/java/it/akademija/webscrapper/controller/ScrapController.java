@@ -1,10 +1,13 @@
 package it.akademija.webscrapper.controller;
 
+import it.akademija.webscrapper.model.ShowUnit;
 import it.akademija.webscrapper.service.ScrapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -15,7 +18,7 @@ public class ScrapController {
     ScrapService scrapService;
 
     @GetMapping()
-    public String getResponse() {
+    public List<ShowUnit> getResponse() {
         return scrapService.getShowName();
     }
 }
