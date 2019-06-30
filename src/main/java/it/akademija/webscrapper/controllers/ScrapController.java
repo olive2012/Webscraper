@@ -1,4 +1,4 @@
-package it.akademija.webscrapper.controller;
+package it.akademija.webscrapper.controllers;
 
 import it.akademija.webscrapper.model.ShowUnit;
 import it.akademija.webscrapper.service.ScrapService;

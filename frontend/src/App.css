@@ -2,6 +2,8 @@
   text-align: center;
 }
 header{
+  text-align: justify;
+  letter-spacing: 1px;
   background: black;
   color: white;
   padding: 20px;
@@ -15,10 +17,12 @@ footer{
   color: white;
   font-weight: bold;
   text-align: center;
+  padding: 10px;
 }
 
 body {
   background: #f06d06;
+  /*background: #2ac7b6;*/
   font-size: 80%;
 }
 
@@ -35,6 +39,10 @@ main {
   overflow: auto;
 }
 
+body{
+  margin:0;
+  padding:0;
+}
 
 
 

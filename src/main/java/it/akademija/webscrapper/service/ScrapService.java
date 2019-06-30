@@ -14,7 +14,7 @@ public class ScrapService {
     @Autowired
     Scraper scraper;
 
-    public List<ShowUnit> getShowData(){
+    public List<ShowUnit> getShowData() {
         List<ShowUnit> listOfShowUnits = new ArrayList<>();
         try {
             listOfShowUnits = scraper.getDataFromURL();
