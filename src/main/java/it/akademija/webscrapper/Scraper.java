@@ -1,54 +1,20 @@
 package it.akademija.webscrapper;
 
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-
-
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class Scraper {
 
-    public static void getHTMLpage() {
-        String searchQuery = "Iphone 6s";
-
-        WebClient client = new WebClient();
-        client.getOptions().setCssEnabled(false);
-        client.getOptions().setJavaScriptEnabled(false);
-        try {
-            String searchUrl = "https://www.lrt.lt/" + URLEncoder.encode(searchQuery, "UTF-8");
-            HtmlPage page = client.getPage(searchUrl);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    //    public void getDataFromPage(HtmlPage page) {
-//        List<HtmlElement> items = (List<HtmlElement>) page.getByXPath("//li[@class='result-row']");
-//        if (items.isEmpty()) {
-//            System.out.println("No items found !");
-//        } else {
-//            for (HtmlElement item : items) {
-//                HtmlAnchor itemAnchor = ((HtmlAnchor) htmlItem.getFirstByXPath(".//p[@class='result-info']/a"));
-//
-//                HtmlElement spanPrice = ((HtmlElement) htmlItem.getFirstByXPath(".//a/span[@class='result-price']"));
-//
-//                String itemName = itemAnchor.asText();
-//                String itemUrl = itemAnchor.getHrefAttribute();
-//
-//                System.out.println(String.format("Name : %s Url : %s Price : %s", itemName, itemPrice, itemUrl));
-//            }
-//        }
-//    }
     public void getDataFromPage() throws IOException {
         String html = "<html><head><title>Website title</title></head><body><p>Sample paragraph number 1 </p><p>Sample paragraph number 2</p></body></html>";
 
@@ -63,18 +29,49 @@ public class Scraper {
     public static void getDataFromURL() throws IOException {
         try {
             Document doc = Jsoup.connect("https://www.lrt.lt/").get();
+
+            //show name only
             Elements showNames = doc.getElementsByClass("channel-item__title");
+            System.out.println("getElementsByClass ");
             for (Element title : showNames) {
                 System.out.println(title.text());
             }
+            //time only
+            Elements channelNames5 = doc.getElementsByClass("data-block__text");
+            System.out.println("getElementsByClass ");
+            for (Element title : channelNames5) {
+                System.out.println(title.text());
+            }
+
+            //show name + time
             Elements channelNames = doc.getElementsByAttribute("data-tvprogname");
+            System.out.println("getElementsByAttribute ");
             for (Element title : channelNames) {
                 System.out.println(title.text());
+            }
+
+            Elements channelNames6 = doc.getElementsByAttribute("data-tvprogname");
+            System.out.println("getElementsByAttribute ");
+            for (Element title : channelNames6) {
+                System.out.println(title.text());
+                String text = title.attributes().toString();
+                System.out.println(parsingTextWithRegex(text));
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public static String parsingTextWithRegex(String text){
+        final String REGEX = "tvprogname\\=\\\"(.+)\\\"\\s";
+        final Pattern pattern = Pattern.compile(REGEX, Pattern.MULTILINE);
+        final Matcher matcher = pattern.matcher(text);
+        String chanelName = "";
+        if (matcher.find()) {
+            chanelName = matcher.group(1);
+        }
+        return chanelName;
     }
 }
 
