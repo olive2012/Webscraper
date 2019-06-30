@@ -19,6 +19,6 @@ public class ScrapController {
 
     @GetMapping()
     public List<ShowUnit> getResponse() {
-        return scrapService.getShowName();
+        return scrapService.getShowData();
     }
 }
