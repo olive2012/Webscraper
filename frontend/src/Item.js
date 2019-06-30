@@ -7,7 +7,8 @@ class Item extends Component {
             <div className="container">
                 <div className="card my-3">
                     <h5 className="card-header">
-                        <img className="card-img-top" src={"/images/" + this.props.item.channelName +".jpg"} alt="Card image cap"
+                        <img className="card-img-top" src={"/images/" + this.props.item.channelName + ".jpg"}
+                             alt="Card image cap"
                              style={{width: "70px"}}/>&nbsp;
                         {this.props.item.channelName}</h5>
                     <div className="card-body">

@@ -44,12 +44,14 @@ class App extends React.Component {
 
                         <div>
                             <button className="bg-dark text-white font-weight-bold mx-1"
-                                    onClick={() => {this.setState({translations: this.translations_lt})
-                            }}>LT
+                                    onClick={() => {
+                                        this.setState({translations: this.translations_lt})
+                                    }}>LT
                             </button>
                             <button className="bg-dark text-white font-weight-bold mx-1"
-                                    onClick={() => {this.setState({translations: this.translations_en})
-                            }}>EN
+                                    onClick={() => {
+                                        this.setState({translations: this.translations_en})
+                                    }}>EN
                             </button>
                         </div>
                     </header>
