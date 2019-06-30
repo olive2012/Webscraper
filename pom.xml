@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.akademija</groupId>
-    <artifactId>webscrapper</artifactId>
+    <artifactId>webscraper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>webscrapper</name>
     <description>Demo project for Spring Boot</description>
