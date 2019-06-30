@@ -39,7 +39,7 @@ public class Scraper {
 
             listOfShowUnits = IntStream.range(0, showNames.size())
                     .boxed()
-                    .map(i -> new ShowUnit(showTimes.get(i).text(), showNames.get(i).text(),
+                    .map(i -> new ShowUnit(showNames.get(i).text(), showTimes.get(i).text(),
                             RegexHelper.parsingTextWithRegex(rawShowData.get(i).attributes().toString())))
                     .collect(toList());
 
