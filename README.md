@@ -1,7 +1,7 @@
 # Webscraper
 Extracts currently playing shows on LRT channels from website www.lrt.lt. 
 You can choose either LT or EN (default) language.
-Data automatically refreshes every 10 sec (for demostration purposes).
+Data automatically refreshes every 60 sec (for demostration purposes).
 
 ## Docker
 The docker image can be pulled from DockerHub using 
