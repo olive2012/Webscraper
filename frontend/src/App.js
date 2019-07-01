@@ -6,7 +6,8 @@ import './App.css';
 class App extends React.Component {
     state = {
         showData: [],
-        translations: {}
+        translations: {},
+        isLoading : false
     };
 
     translations_lt =
@@ -20,13 +21,16 @@ class App extends React.Component {
     componentDidMount() {
         this.setState({translations: this.translations_en});
         this.refreshData();
-        setInterval(() => this.refreshData(), 10000);
+        setInterval(() => this.refreshData(), 60000);
     }
 
     refreshData = () => {
+        this.setState({isLoading : true});
+
         axios.get("/api/data")
             .then(result => {
                     this.setState({showData: result.data})
+                    this.setState({isLoading : false});
 
                 }
             );
@@ -59,7 +63,8 @@ class App extends React.Component {
                 <div className="container">
 
                     <div className="col-sm-12">
-                        <ItemList itemsToShow={this.state.showData} title={this.state.translations.listTitle}/>
+                        {this.state.isLoading ? <img style={{width:"100px", margin:"0 auto", display:"block"}} src="https://i.gifer.com/ZKZg.gif"/> :
+                        <ItemList itemsToShow={this.state.showData} title={this.state.translations.listTitle}/>}
                     </div>
                 </div>
                 <div className="container-fluid">

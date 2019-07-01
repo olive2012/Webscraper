@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # build frontend
-cd ./frontend/
+cd ././frontend/
 npm run build
 cd ..
 
